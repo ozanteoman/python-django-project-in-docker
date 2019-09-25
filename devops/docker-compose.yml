@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  app:
+    build:
+      context: ./..
+      dockerfile: ./devops/web/Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - "./../app:/app"
+    command: >
+      sh -c "./web/docker-entrypoint.sh"

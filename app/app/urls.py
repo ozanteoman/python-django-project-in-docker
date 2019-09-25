@@ -15,7 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from public_api.views import index, DocumentCreateView, PrivateDocumentCreateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', index, name='home'),
+    path('amazon-image-upload', DocumentCreateView.as_view(), name='amazon-image-upload'),
+    path('private-amazon-image-upload', PrivateDocumentCreateView.as_view(), name='private-amazon-image-upload')
 ]
