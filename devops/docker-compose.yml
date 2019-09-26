@@ -11,3 +11,15 @@ services:
       - "./../app:/app"
     command: >
       sh -c "./web/docker-entrypoint.sh"
+  elasticsearch:
+    build:
+      context: ./..
+      dockerfile: ./devops/es/Dockerfile
+    environment:
+      - cluster.initial_master_nodes=es01
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - "9200:9200"
